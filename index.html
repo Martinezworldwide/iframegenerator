@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
@@ -43,6 +44,11 @@
             margin-top: 20px;
             word-break: break-all;
         }
+        .iframe-container {
+            margin-top: 40px;
+            width: 100%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +61,8 @@
         <div class="output" id="output"></div>
     </div>
 
+    <div class="iframe-container" id="iframe-container"></div>
+
     <script>
         function generateIframe() {
             const url = document.getElementById('url').value;
@@ -64,8 +72,13 @@
             if (url && width && height) {
                 const iframeCode = `<iframe src="${url}" width="${width}" height="${height}" frameborder="0" allowfullscreen></iframe>`;
                 document.getElementById('output').innerText = iframeCode;
+
+                // Display the iframe in the iframe-container div
+                const iframeContainer = document.getElementById('iframe-container');
+                iframeContainer.innerHTML = iframeCode;
             } else {
                 document.getElementById('output').innerText = 'Please fill in all fields.';
+                document.getElementById('iframe-container').innerHTML = '';
             }
         }
     </script>
