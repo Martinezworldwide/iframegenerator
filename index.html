@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iFrame Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>iFrame Generator</h2>
+        <input type="text" id="url" placeholder="Enter URL" />
+        <input type="text" id="width" placeholder="Width (e.g., 600px)" />
+        <input type="text" id="height" placeholder="Height (e.g., 400px)" />
+        <button onclick="generateIframe()">Generate iFrame</button>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function generateIframe() {
+            const url = document.getElementById('url').value;
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+
+            if (url && width && height) {
+                const iframeCode = `<iframe src="${url}" width="${width}" height="${height}" frameborder="0" allowfullscreen></iframe>`;
+                document.getElementById('output').innerText = iframeCode;
+            } else {
+                document.getElementById('output').innerText = 'Please fill in all fields.';
+            }
+        }
+    </script>
+</body>
+</html>
